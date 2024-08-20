@@ -72,3 +72,12 @@
         box-shadow: #641e03 0px 0px 5px;
     }
 }
+
+.invalid label {
+    color: #ff0000;
+}
+
+.invalid input {
+    border-color: #ff0000;
+    background-color: #ffdbd8;
+}
