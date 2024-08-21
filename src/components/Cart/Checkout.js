@@ -46,11 +46,31 @@ const Checkout = (props) => {
     if (!formIsValid) {
       return;
     }
+
+    props.onConfirm({
+      name: enteredName,
+      street: enteredStreet,
+      postal: enteredPostal,
+      city: enteredCity,
+    });
   };
+
+  const nameControlClasses = `${classes.control} ${
+    formInputsValidity.name ? "" : classes.invalid
+  }`;
+  const streetControlClasses = `${classes.control} ${
+    formInputsValidity.street ? "" : classes.invalid
+  }`;
+  const postalControlClasses = `${classes.control} ${
+    formInputsValidity.postal ? "" : classes.invalid
+  }`;
+  const cityControlClasses = `${classes.control} ${
+    formInputsValidity.city ? "" : classes.invalid
+  }`;
 
   return (
     <form className={classes.form} onSubmit={ConfirmHandler}>
-      <div className={classes.control}>
+      <div className={nameControlClasses}>
         <label htmlFor="name">Your Name</label>
         <input
           placeholder="Enter you Full Name"
@@ -60,7 +80,7 @@ const Checkout = (props) => {
         />
         {!formInputsValidity.name && <p>Please enter a valid name!</p>}
       </div>
-      <div className={classes.control}>
+      <div className={streetControlClasses}>
         <label htmlFor="street">Street</label>
         <input
           placeholder="Enter your street address"
@@ -70,7 +90,7 @@ const Checkout = (props) => {
         />
         {!formInputsValidity.street && <p>Please enter a valid street!</p>}
       </div>
-      <div className={classes.control}>
+      <div className={postalControlClasses}>
         <label htmlFor="postal">Postal Code</label>
         <input
           placeholder="Enter your postal code"
@@ -82,7 +102,7 @@ const Checkout = (props) => {
           <p>Please enter a valid postal code (6 characters long)!</p>
         )}
       </div>
-      <div className={classes.control}>
+      <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
         <input
           placeholder="Enter your City here"
